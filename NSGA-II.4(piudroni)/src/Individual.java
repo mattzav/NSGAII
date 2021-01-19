@@ -29,17 +29,12 @@ public class Individual {
 
 		visited = new TreeSet<Integer>();
 
-		double maxLengthTour = 0;
-		for (int j = 0; j < genotypeVehicle.size(); j++) {
-			visited.addAll(genotypeVehicle.get(j).getTour());
-			if (genotypeVehicle.get(j).getTourLength() > maxLengthTour) {
-				maxLengthTour = genotypeVehicle.get(j).getTourLength();
-			}
-		}
 		// START
 
 		double totalSum = 0;
 		for (int j = 0; j < genotypeVehicle.size(); j++) {
+			visited.addAll(genotypeVehicle.get(j).getTour());
+
 			double cumulative = 0;
 			int pred = 0;
 			for (Integer node : genotypeVehicle.get(j).getTour()) {
@@ -142,6 +137,8 @@ public class Individual {
 	public String toString() {
 		return "\n" + "SOL: \n" + "Vehicle " + genotypeVehicle + "\n" + "\n Num vehicles =  " + objectiveValue[0] + "\n"
 				+ "Max length Tour =" + objectiveValue[1] + "\n" + "Profit =" + objectiveValue[2] + "] \n \n";
+//		return "\n" + "\n Num vehicles =  " + objectiveValue[0] + "\n" + "Max length Tour =" + objectiveValue[1] + "\n"
+//				+ "Profit =" + objectiveValue[2] + "] \n \n";
 
 	}
 }
